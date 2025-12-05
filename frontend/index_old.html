@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Wiki Quiz App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Wiki Quiz App</h1>
+  <nav>
+    <button id="generateTab" class="active">Generate Quiz</button>
+    <button id="historyTab">History</button>
+  </nav>
+
+  <section id="generateSection">
+    <input type="url" id="urlInput" placeholder="Enter Wikipedia URL" />
+    <button id="generateBtn">Generate</button>
+    <div id="quizContainer"></div>
+  </section>
+
+  <section id="historySection" class="hidden">
+    <table id="historyTable">
+      <thead>
+        <tr>
+          <th>URL</th>
+          <th>Title</th>
+          <th>Created At</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <div id="detailsModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <pre id="detailsContent"></pre>
+    </div>
+  </div>
+
+  <script src="script.js?v=20251205"></script>
+</body>
+
+</html>

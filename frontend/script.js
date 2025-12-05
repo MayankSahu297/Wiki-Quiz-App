@@ -1,0 +1,139 @@
+const API_URL = "https://wiki-quiz-app.onrender.com";
+
+const generateTab = document.getElementById("generateTab");
+const historyTab = document.getElementById("historyTab");
+const generateSection = document.getElementById("generateSection");
+const historySection = document.getElementById("historySection");
+const urlInput = document.getElementById("urlInput");
+const generateBtn = document.getElementById("generateBtn");
+const quizContainer = document.getElementById("quizContainer");
+const historyTable = document.getElementById("historyTable").querySelector("tbody");
+const detailsModal = document.getElementById("detailsModal");
+const detailsContent = document.getElementById("detailsContent");
+const closeModal = document.getElementById("closeModal");
+
+// Tab switching
+generateTab.addEventListener("click", () => {
+    generateTab.classList.add("active");
+    historyTab.classList.remove("active");
+    generateSection.classList.remove("hidden");
+    historySection.classList.add("hidden");
+});
+
+historyTab.addEventListener("click", () => {
+    historyTab.classList.add("active");
+    generateTab.classList.remove("active");
+    historySection.classList.remove("hidden");
+    generateSection.classList.add("hidden");
+    loadHistory();
+});
+
+// Generate Quiz
+generateBtn.addEventListener("click", async () => {
+    const url = urlInput.value.trim();
+    if (!url) return alert("Please enter a Wikipedia URL");
+
+    generateBtn.disabled = true;
+    generateBtn.textContent = "Generating...";
+    quizContainer.innerHTML = "<p>Loading...</p>";
+
+    try {
+        const res = await fetch(`${API_URL}/generate`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ url }),
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            throw new Error(err.detail || "Failed to generate quiz");
+        }
+
+        const data = await res.json();
+        console.log("API Response:", data);
+        console.log("Quiz data:", data.quiz);
+        renderQuiz(data);
+    } catch (err) {
+        console.error("Error generating quiz:", err);
+        quizContainer.innerHTML = `<p style="color:red">Error: ${err.message}</p>`;
+    } finally {
+        generateBtn.disabled = false;
+        generateBtn.textContent = "Generate";
+    }
+});
+
+function renderQuiz(data) {
+    quizContainer.innerHTML = "";
+
+    // The API returns quiz data directly at the top level
+    // data.quiz contains the array of questions
+    const questions = data.quiz || [];
+
+    if (!questions.length) {
+        quizContainer.innerHTML = "<p>No questions generated.</p>";
+        return;
+    }
+
+    questions.forEach((q, index) => {
+        const card = document.createElement("div");
+        card.className = "quiz-card";
+        card.innerHTML = `
+      <h3>${index + 1}. ${q.question}</h3>
+      <ul>
+        ${q.options.map(opt => `<li>${opt}</li>`).join("")}
+      </ul>
+      <p><strong>Answer:</strong> ${q.correct_answer}</p>
+      <p><em>${q.explanation}</em></p>
+    `;
+        quizContainer.appendChild(card);
+    });
+}
+
+// History
+async function loadHistory() {
+    historyTable.innerHTML = "<tr><td colspan='4'>Loading...</td></tr>";
+    try {
+        const res = await fetch(`${API_URL}/history`);
+        const data = await res.json();
+
+        historyTable.innerHTML = "";
+        data.forEach(item => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+        <td><a href="${item.url}" target="_blank">${item.url}</a></td>
+        <td>${item.title}</td>
+        <td>${new Date(item.created_at).toLocaleString()}</td>
+        <td><button class="details-btn" data-id="${item.id}">Details</button></td>
+      `;
+            historyTable.appendChild(row);
+        });
+
+        document.querySelectorAll(".details-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => showDetails(e.target.dataset.id));
+        });
+    } catch (err) {
+        historyTable.innerHTML = `<tr><td colspan='4' style="color:red">Error loading history</td></tr>`;
+    }
+}
+
+async function showDetails(quizId) {
+    try {
+        const res = await fetch(`${API_URL}/quiz/${quizId}`);
+        const data = await res.json();
+        // Display the entire quiz response
+        detailsContent.textContent = JSON.stringify(data, null, 2);
+        detailsModal.classList.remove("hidden");
+    } catch (err) {
+        alert("Failed to load details");
+    }
+}
+
+closeModal.addEventListener("click", () => {
+    detailsModal.classList.add("hidden");
+});
+
+window.onclick = (event) => {
+    if (event.target == detailsModal) {
+        detailsModal.classList.add("hidden");
+    }
+};
