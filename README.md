@@ -6,7 +6,7 @@ Transform any Wikipedia article into an interactive, AI-powered learning experie
 ![Python](https://img.shields.io/badge/python-3.8+-green)
 ![License](https://img.shields.io/badge/license-MIT-orange)
 
-## 🌐 Live Demo
+## **🌐 Live Demo:**   [https://wiki-quiz-apps.onrender.com/app.html](https://wiki-quiz-apps.onrender.com/app.html)    
 
 **🎨 Frontend:** [https://wiki-quiz-apps.onrender.com/app.html](https://wiki-quiz-apps.onrender.com/app.html)      
 **🔧 Backend API:** [https://wiki-quiz-app.onrender.com](https://wiki-quiz-app.onrender.com)  
@@ -49,6 +49,28 @@ Transform any Wikipedia article into an interactive, AI-powered learning experie
 - **Professional Typography** - Uses Inter font for clean, modern look
 - **Micro-interactions** - Buttons and cards respond to hover and clicks
 
+## 📸 Screenshots
+
+### Main Interface
+<img width="1913" height="964" alt="Screenshot 2025-12-06 012626" src="https://github.com/user-attachments/assets/2f0d0599-d1b8-481a-a113-2c0e94079f52" />
+
+### Quiz View Mode
+<img width="1901" height="857" alt="Screenshot 2025-12-06 002712" src="https://github.com/user-attachments/assets/a10223f0-3386-45f4-8c7a-3830182ddeaf" />
+
+### Interactive Quiz Mode
+<img width="1900" height="866" alt="Screenshot 2025-12-06 002621" src="https://github.com/user-attachments/assets/65a95a34-63d8-466d-9a22-9ba1602ed37e" />
+
+### After interaction
+<img width="1898" height="863" alt="Screenshot 2025-12-06 002836" src="https://github.com/user-attachments/assets/36a09e03-7f10-4995-8270-cec470d38699" />
+
+### Result after completing Quiz
+<img width="1897" height="864" alt="Screenshot 2025-12-06 002812" src="https://github.com/user-attachments/assets/df450334-307c-4f02-88ae-0f258842d3a0" />
+
+### Quiz History
+<img width="1898" height="967" alt="Screenshot 2025-12-06 002910" src="https://github.com/user-attachments/assets/cd560d1b-e3ca-43c6-8f9e-844f7c65d02b" />
+
+---
+
 ## 🛠️ Tech Stack
 
 ### Backend
@@ -78,17 +100,7 @@ Before you begin, ensure you have:
 
 ### Step 1: Clone the Repository
 
-```bash
-git clone <your-repo-url>
-cd "Wiki Quiz App"
-```
-
 ### Step 2: Install Python Dependencies
-
-```bash
-pip install -r backend/requirements.txt
-```
-
 **Required packages:**
 - fastapi
 - uvicorn[standard]
@@ -104,42 +116,11 @@ pip install -r backend/requirements.txt
 
 ### Step 3: Set Up Neon Database
 
-1. Go to [neon.tech](https://neon.tech) and sign up (free)
-2. Create a new project named `wiki-quiz-app`
-3. Copy your connection string (it looks like):
-   ```
-   postgresql://username:password@ep-xxxxx.region.aws.neon.tech/dbname?sslmode=require
-   ```
-
 ### Step 4: Get Google Gemini API Key
-
-1. Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. Sign in with your Google account
-3. Click "Create API Key"
-4. Copy the generated API key
 
 ### Step 5: Configure Environment Variables
 
-Create a `.env` file in the project root directory:
-
-```env
-POSTGRES_URL=postgresql://your_neon_connection_string_here
-GEMINI_API_KEY=your_gemini_api_key_here
-USE_MOCK_LLM=false
-```
-
-**Configuration Options:**
-- `POSTGRES_URL` - Your Neon PostgreSQL connection string
-- `GEMINI_API_KEY` - Your Google Gemini API key
-- `USE_MOCK_LLM` - Set to `true` for testing without API calls (uses demo quizzes)
-
 ### Step 6: Create Database Tables
-
-```bash
-python create_db.py
-```
-
-You should see: `✅ DB tables created`
 
 ## 🎮 Running the Application
 
@@ -261,41 +242,6 @@ Edit `backend/app/llm.py` to change the number of questions:
 - quiz: an array of 5-10 questions.
 ```
 
-## 🐛 Troubleshooting
-
-### Database Connection Error
-- ✅ Verify your Neon connection string in `.env`
-- ✅ Check that your Neon database is active (not paused)
-- ✅ Ensure the connection string includes `?sslmode=require`
-- ✅ Run `python create_db.py` to create tables
-
-### Gemini API Quota Exceeded
-- ✅ Get a new API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
-- ✅ Or set `USE_MOCK_LLM=true` in `.env` to use demo quizzes
-- ✅ Check your API usage at [Google AI Studio](https://aistudio.google.com)
-
-### Port Already in Use
-- ✅ Change backend port: `uvicorn backend.app.main:app --reload --port 8001`
-- ✅ Change frontend port: `python -m http.server 5501 --directory frontend`
-- ✅ Update the URL in your browser accordingly
-
-### Frontend Not Loading
-- ✅ Ensure the frontend server is running on port 5500
-- ✅ Check browser console (F12) for errors
-- ✅ Clear browser cache (Ctrl+Shift+Delete)
-- ✅ Try accessing http://localhost:5500/app.html directly
-
-### Quiz Generation Takes Too Long
-- ✅ Normal generation time: 10-60 seconds
-- ✅ Longer articles take more time
-- ✅ Check backend terminal for progress logs
-- ✅ Ensure stable internet connection for API calls
-
-### Browser Caching Issues
-- ✅ Hard refresh: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
-- ✅ Clear cache: Ctrl+Shift+Delete
-- ✅ Use incognito/private browsing mode
-- ✅ Access http://localhost:5500/app.html (not index.html)
 
 ## 📁 Project Structure
 
@@ -332,7 +278,7 @@ This app is currently deployed and live!
 
 ### Live URLs
 
-- **Frontend:** https://wiki-quiz-apps.onrender.com/
+- **Frontend:** [https://wiki-quiz-apps.onrender.com/](https://wiki-quiz-apps.onrender.com/app.html)
 - **Backend API:** https://wiki-quiz-app.onrender.com
 - **API Docs:** https://wiki-quiz-app.onrender.com/docs
 
@@ -351,46 +297,8 @@ This app is currently deployed and live!
 - Publish Directory: `.`
 - Auto-deploy: Enabled (on GitHub push)
 
-### Deploy Your Own Instance
 
-Want to deploy your own version? Follow these steps:
 
-#### 1. Deploy Backend
-
-1. **Push code to GitHub**
-2. **Create a new Web Service** on [Render](https://render.com)
-3. **Connect your GitHub repository**
-4. **Configure settings:**
-   - Build Command: `pip install -r backend/requirements.txt`
-   - Start Command: `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
-5. **Add environment variables:**
-   - `POSTGRES_URL` - Your Neon connection string
-   - `GEMINI_API_KEY` - Your Google Gemini API key
-   - `USE_MOCK_LLM` - Set to `false` for production
-6. **Deploy** and copy your backend URL
-
-#### 2. Deploy Frontend
-
-1. **Update API URL** in `frontend/index.html`:
-   ```javascript
-   const API_URL = "https://your-backend-url.onrender.com";
-   ```
-2. **Commit and push** to GitHub
-3. **Create a new Static Site** on Render
-4. **Configure settings:**
-   - Root Directory: `frontend`
-   - Publish Directory: `.`
-5. **Deploy** and access your live app!
-
-For detailed deployment instructions, see [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md).
-
-## 🔐 Security Notes
-
-- ⚠️ **Never commit `.env` file** to version control
-- ⚠️ **Keep your Gemini API key private**
-- ⚠️ **Use environment variables** for sensitive data
-- ⚠️ **The Neon connection string contains your password** - keep it secure
-- ✅ Add `.env` to `.gitignore`
 
 ## 🎯 Future Enhancements
 
@@ -411,54 +319,9 @@ Potential features for future versions:
 
 MIT License - Feel free to use this project for learning and development.
 
-## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
-## 📧 Support
 
-For issues or questions:
-- Open an issue on GitHub
-- Check the Troubleshooting section above
-- Review the API documentation at http://127.0.0.1:8000/docs
 
-## 🙏 Acknowledgments
-
-- **Wikipedia** - For providing free, open knowledge
-- **Google Gemini AI** - For powerful language model capabilities
-- **Neon** - For serverless PostgreSQL hosting
-- **FastAPI** - For the excellent Python web framework
-- **LangChain** - For LLM integration tools
-
----
-
-**Built with ❤️ using FastAPI, Neon PostgreSQL, and Google Gemini AI**
-
-🌟 **Star this repo if you found it helpful!**
-
----
-
-## 📸 Screenshots
-
-### Main Interface
-![Main Interface](screenshots/main-interface.png)
-
-### Quiz View Mode
-![Quiz View Mode](screenshots/quiz-view.png)
-
-### Interactive Quiz Mode
-![Interactive Mode](screenshots/quiz-interactive.png)
-
-### Quiz History
-![Quiz History](screenshots/history.png)
-
----
-
-**Version 2.0** - Enhanced with Interactive Quiz Mode, Difficulty Badges, Key Entities, and Premium UI Design
 
