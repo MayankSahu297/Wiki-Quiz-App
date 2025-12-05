@@ -6,6 +6,14 @@ Transform any Wikipedia article into an interactive, AI-powered learning experie
 ![Python](https://img.shields.io/badge/python-3.8+-green)
 ![License](https://img.shields.io/badge/license-MIT-orange)
 
+## 🌐 Live Demo
+
+**🎨 Frontend:** [https://wiki-quiz-apps.onrender.com/](https://wiki-quiz-apps.onrender.com/)  
+**🔧 Backend API:** [https://wiki-quiz-app.onrender.com](https://wiki-quiz-app.onrender.com)  
+**📚 API Documentation:** [https://wiki-quiz-app.onrender.com/docs](https://wiki-quiz-app.onrender.com/docs)
+
+> **Note:** The backend may take 30-60 seconds to wake up on first request (free tier limitation).
+
 ## 🌟 Features
 
 ### 🎯 Core Features
@@ -320,26 +328,61 @@ Wiki Quiz App/
 
 ## 🌐 Deployment
 
-### Deploy Backend (Render/Railway/Heroku)
+This app is currently deployed and live!
+
+### Live URLs
+
+- **Frontend:** https://wiki-quiz-apps.onrender.com/
+- **Backend API:** https://wiki-quiz-app.onrender.com
+- **API Docs:** https://wiki-quiz-app.onrender.com/docs
+
+### Deployment Stack
+
+**Backend (Render Web Service)**
+- Platform: Render
+- Runtime: Python 3
+- Database: Neon PostgreSQL (Serverless)
+- Build Command: `pip install -r backend/requirements.txt`
+- Start Command: `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
+
+**Frontend (Render Static Site)**
+- Platform: Render
+- Root Directory: `frontend`
+- Publish Directory: `.`
+- Auto-deploy: Enabled (on GitHub push)
+
+### Deploy Your Own Instance
+
+Want to deploy your own version? Follow these steps:
+
+#### 1. Deploy Backend
 
 1. **Push code to GitHub**
-2. **Create a new web service** on your platform
-3. **Add environment variables:**
-   - `POSTGRES_URL`
-   - `GEMINI_API_KEY`
-   - `USE_MOCK_LLM`
-4. **Set build command:** `pip install -r backend/requirements.txt`
-5. **Set start command:** `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
+2. **Create a new Web Service** on [Render](https://render.com)
+3. **Connect your GitHub repository**
+4. **Configure settings:**
+   - Build Command: `pip install -r backend/requirements.txt`
+   - Start Command: `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
+5. **Add environment variables:**
+   - `POSTGRES_URL` - Your Neon connection string
+   - `GEMINI_API_KEY` - Your Google Gemini API key
+   - `USE_MOCK_LLM` - Set to `false` for production
 6. **Deploy** and copy your backend URL
 
-### Deploy Frontend (Netlify/Vercel/GitHub Pages)
+#### 2. Deploy Frontend
 
-1. **Upload `frontend/` folder** to your platform
-2. **Update API URL** in `frontend/app.html`:
+1. **Update API URL** in `frontend/index.html`:
    ```javascript
-   const API_URL = "https://your-backend-url.com";
+   const API_URL = "https://your-backend-url.onrender.com";
    ```
-3. **Deploy** and access your live app!
+2. **Commit and push** to GitHub
+3. **Create a new Static Site** on Render
+4. **Configure settings:**
+   - Root Directory: `frontend`
+   - Publish Directory: `.`
+5. **Deploy** and access your live app!
+
+For detailed deployment instructions, see [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md).
 
 ## 🔐 Security Notes
 
