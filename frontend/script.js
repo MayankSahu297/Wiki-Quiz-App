@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://wiki-quiz-app.onrender.com";
 
 const generateTab = document.getElementById("generateTab");
 const historyTab = document.getElementById("historyTab");
