@@ -1,0 +1,47 @@
+{
+  "id": 2,
+  "url": "https://en.wikipedia.org/wiki/Cat",
+  "title": "Cat",
+  "summary": "",
+  "key_entities": null,
+  "sections": null,
+  "quiz": [
+    {
+      "question": "What is the main topic of this article about Cat?",
+      "options": [
+        "A) Cat",
+        "B) Something else",
+        "C) Another topic",
+        "D) None of the above"
+      ],
+      "correct_answer": "A) Cat",
+      "difficulty": "easy",
+      "explanation": "This is the main subject of the article."
+    },
+    {
+      "question": "According to the article, which statement is most accurate?",
+      "options": [
+        "A) The topic is widely studied",
+        "B) The topic is rarely discussed",
+        "C) The topic doesn't exist",
+        "D) The topic is fictional"
+      ],
+      "correct_answer": "A) The topic is widely studied",
+      "difficulty": "medium",
+      "explanation": "Based on the comprehensive Wikipedia article."
+    },
+    {
+      "question": "What can you learn from reading about Cat?",
+      "options": [
+        "A) Historical context and facts",
+        "B) Cooking recipes",
+        "C) Weather patterns",
+        "D) Sports scores"
+      ],
+      "correct_answer": "A) Historical context and facts",
+      "difficulty": "easy",
+      "explanation": "Wikipedia articles provide factual information."
+    }
+  ],
+  "related_topics": null
+}
