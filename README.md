@@ -8,7 +8,7 @@ Transform any Wikipedia article into an interactive, AI-powered learning experie
 
 ## 🌐 Live Demo
 
-**🎨 Frontend:** [https://wiki-quiz-apps.onrender.com/](https://wiki-quiz-apps.onrender.com/)  
+**🎨 Frontend:** [https://wiki-quiz-apps.onrender.com/app.html](https://wiki-quiz-apps.onrender.com/app.html)      
 **🔧 Backend API:** [https://wiki-quiz-app.onrender.com](https://wiki-quiz-app.onrender.com)  
 **📚 API Documentation:** [https://wiki-quiz-app.onrender.com/docs](https://wiki-quiz-app.onrender.com/docs)
 
