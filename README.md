@@ -12,7 +12,8 @@ Transform any Wikipedia article into an interactive, AI-powered learning experie
 **🔧 Backend API:** [https://wiki-quiz-app.onrender.com](https://wiki-quiz-app.onrender.com)  
 **📚 API Documentation:** [https://wiki-quiz-app.onrender.com/docs](https://wiki-quiz-app.onrender.com/docs)
 
-> **Note:** The backend may take 30-60 seconds to wake up on first request (free tier limitation).
+> **Note:** The backend may take 30-60 seconds to wake up on first request (free tier limitation).           
+> **Note:** Use `app.html` for the full enhanced experience with all features!
 
 ## 🌟 Features
 
